@@ -16,6 +16,7 @@
 //= require foundation
 //= require turbolinks
 //= require jquery_nested_form
+//= require jquery-ui
 
 // $(function(){ $(document).foundation(); });
 // $(document).foundation();
