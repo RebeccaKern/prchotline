@@ -27,6 +27,15 @@ $(function(){
 
   $(document).ready(function(){
 
+    $( ".selector" ).slider({
+      animate: "fast"
+    });
+    // Getter
+    var animate = $( ".selector" ).slider( "option", "animate" );
+     
+    // Setter
+    $( ".selector" ).slider( "option", "animate", "fast" );
+
       var _scroll = true, _timer = false, _floatbox = $("#contact_form"), _floatbox_opener = $(".contact-opener") ;
       _floatbox.css("right", "0px"); //initial contact form position
 

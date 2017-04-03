@@ -1,4 +1,12 @@
 <h1>New Item</h1>
 
+<%= javascript_include_tag "application" %>
+<script>
+  $( function() {
+    $( "#slider" ).slider();
+  } );
+  </script>
+<div id="slider"></div>
+
 <%= render 'form', item: @item %>
 <button type="button"><%= link_to 'Back', items_path %></button>
