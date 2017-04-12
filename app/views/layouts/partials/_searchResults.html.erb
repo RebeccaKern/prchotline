@@ -20,10 +20,18 @@
         <p><%= @county.name %> can recycle <%= @item.name %>
         <br> <br>
           County Coordinator: <br>
-          <%= @county.coordinator %><br>
-          <%= @county.phone%><br>
+          <% if @county.coordinator  %>
+            <%= @county.coordinator  %><br>
+          <% else %>
+            <%= "There is no county coordinator." %><br>
+          <% end %>
+          <% if @county.phone %>
+            <%= @county.phone%><br>
+          <% else %>
+            <%= "There is no county phone number." %><br>
+          <% end %>
           <% link = @county.website%>
-          <% if link != 'N/A' %>
+          <% if link != nil %>
             <%= link_to "County Recycling Website", "#{link}", :target => "_blank" %>
           <% else %>
             <%= "There is no county website." %>

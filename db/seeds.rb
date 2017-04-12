@@ -22,6 +22,15 @@ csv.each do |row|
   countyCoord = row["Coordinator "]
   countyPhone = row["Phone #"]
   countyWebsite = row["Website"]
+  if (countyCoord == 'N/A')
+    countyCoord = nil
+  end
+  if (countyPhone == 'N/A')
+    countyPhone = nil
+  end
+  if (countyWebsite == 'N/A')
+    countyWebsite = nil
+  end
   County.create( name: countyName, coordinator: countyCoord, phone: countyPhone, website: countyWebsite)
 end
 
