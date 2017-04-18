@@ -1,4 +1,7 @@
-<%= simple_form_for @item do |l| %>
+<div class='row'>
+  <div class="large-8 large-centered columns">
+    <fieldset>
+       <%= simple_nested_form_for @item, :html => { :class => 'form-horizontal' } do |l| %>
 
 <% if item.errors.any? %>
   <div id="error_explanation">
@@ -12,8 +15,21 @@
   </div>
 <% end %>
 
-  <%= l.input :name %>
-  <%= l.input :description %>
-  <%= l.input :active %>
-  <%= l.button :submit %>
+<%= render :partial => "items/item_fields", :locals => { :l => l} %>
+
+   <legend>Aliases</legend>
+      <div id="aliases">
+        <%= l.simple_fields_for :aliases do |a| %>
+          <%= render :partial => "items/alias_field", :locals => { :l => a} %>
+        <% end %>
+        <p>
+          <br /><%= l.link_to_add("Add Alias", :aliases, :class => 'button tiny') %>
+        </p>
+      </div>
+
+  <%= l.submit nil, :class => 'button radius' %>
+
 <% end %>
+    </fieldset>
+  </div>
+</div>

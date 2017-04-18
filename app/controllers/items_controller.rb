@@ -28,6 +28,9 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @item.aliases.build
+    puts "we got here"
+    puts @item.aliases
   end
 
   # GET /items/1/edit
@@ -38,7 +41,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
+    puts item_params
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -82,6 +85,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :active)
+      params.require(:item).permit(:name, :description, :active, aliases_attributes: [:id, :name, :item_id, :active, :_destroy])
     end
 end
