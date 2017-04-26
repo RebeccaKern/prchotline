@@ -75,6 +75,9 @@ class MainController < ApplicationController
       county = County.for_name(qCounty.capitalize)
 
       item = Alias.for_name(qItem.downcase)
+      puts "item name"
+      puts qItem
+      puts item
       if county.blank?
         puts "ereror"
         @errors += "#{params[:county]} does not exist"
@@ -86,7 +89,7 @@ class MainController < ApplicationController
         return
       end
       @item = Item.find(item.first.item_id)
-
+      puts @item
       @county = county[0]
       if params[:zip] != ""
         qZip = params[:zip]
@@ -100,6 +103,7 @@ class MainController < ApplicationController
 
 
       else
+        puts "in else"
         #for_county, -> (id) { where('county_id=?', id) }
         @county = County.find(county.first.id)
         #@locations = Location.for_county(@county).for_item(@item).joins(:addresses)
