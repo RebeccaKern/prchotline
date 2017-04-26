@@ -33,6 +33,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    puts "trying to edit"
   end
 
   # POST /items
@@ -53,11 +54,13 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
+    puts "trying to update"
     respond_to do |format|
       if @item.update(item_params)
         format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
+        puts "item was not successful"
         format.html { render :edit }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
